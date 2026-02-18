@@ -50,16 +50,27 @@
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
+    <!-- WhatsApp Widget -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <main>
         <section id="hero" class="hero-section">
-            <div class="hero-bg"></div>
+            <div class="hero-bg">
+                <video autoplay muted loop playsinline id="hero-video">
+                    <source src="video3.mp4" type="video/mp4">
+                </video>
+                <div class="overlay"></div>
+            </div>
             <div class="container hero-content">
                 <h4 class="reveal-text">DRIVE WITH CONFIDENCE</h4>
-                <h1 class="reveal-text highlight">PREMIUM AUTO <br>CARE SOLUTIONS</h1>
+                <h1 class="reveal-text highlight"><span id="typewriter"></span></h1>
                 <p class="reveal-text">Expert car wash, precision detailing, and specialized servicing for the modern
                     driver. From batteries to accessories, we've got you covered.</p>
                 <div class="hero-btns reveal-text">
@@ -78,7 +89,7 @@
 
                 <div class="services-grid">
                     <!-- Car Wash -->
-                    <div class="service-card reveal-up">
+                    <div class="service-card service-card-wash reveal-up">
                         <div class="service-icon"><i class="fa-solid fa-droplet"></i></div>
                         <h3>Car Wash</h3>
                         <p>High-pressure steam cleaning and gentle touch washes that restore your vehicle's pristine
@@ -91,7 +102,7 @@
                     </div>
 
                     <!-- Detailing -->
-                    <div class="service-card reveal-up" style="--delay: 1">
+                    <div class="service-card service-card-detailing reveal-up" style="--delay: 1">
                         <div class="service-icon"><i class="fa-solid fa-sparkles"></i></div>
                         <h3>Car Detailing</h3>
                         <p>Advanced polishing and interior restoration to keep your car looking brand new, inside and
@@ -104,7 +115,7 @@
                     </div>
 
                     <!-- General Servicing -->
-                    <div class="service-card reveal-up" style="--delay: 2">
+                    <div class="service-card service-card-servicing reveal-up" style="--delay: 2">
                         <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
                         <h3>General Servicing</h3>
                         <p>Comprehensive mechanical maintenance to ensure peak performance and longevity.</p>
@@ -148,7 +159,7 @@
             <div class="container reverse product-layout">
                 <div class="product-image-container reveal-left">
                     <div class="image-wrapper">
-                        <div class="placeholder-img battery-img">PREMIUM CAR BATTERIES</div>
+                        <div class="placeholder-img battery-img">CAR BATTERIES</div>
                     </div>
                 </div>
                 <div class="product-info reveal-right">
@@ -221,14 +232,14 @@
                             <i class="fa-solid fa-location-dot"></i>
                             <div>
                                 <h4>Location</h4>
-                                <p>123 Automotive Way, Tech City, ST 12345</p>
+                                <p>Ayyan Car Polishing And Oil Changing<br>Al Rashidiya 3, Ajman, UAE</p>
                             </div>
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-clock"></i>
                             <div>
                                 <h4>Business Hours</h4>
-                                <p>Mon - Sat: 8:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                <p>Sat - Thu: 9:00 AM - 12:00 AM<br>Friday: 9:00 AM - 12:30 AM & 2:00 PM - 12:00 AM</p>
                             </div>
                         </div>
                         <div class="info-item">
@@ -238,6 +249,15 @@
                                 <p>info@ayyanservice.com</p>
                             </div>
                         </div>
+
+                        <!-- Google Map -->
+                        <div class="map-container">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Ayyan+Car+Polishing+And+Oil+Changing%20Al%20Rashidiya%203%20Ajman&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
                     </div>
                 </div>
             </div>

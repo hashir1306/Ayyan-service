@@ -137,9 +137,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            // This is a placeholder for actual mobile menu logic
-            // In a real project, we'd toggle a class and use CSS for the menu
-            alert('Mobile menu clicked! (Implementing in next step if required)');
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+
+            // Animate links on open
+            if (navLinks.classList.contains('active')) {
+                gsap.fromTo('.nav-links li',
+                    { x: 50, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 0.5, stagger: 0.1, delay: 0.2 }
+                );
+            }
         });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
+
+    // 7. Services Background Parallax
+    gsap.fromTo('.services-section',
+        { backgroundPosition: '50% 0%' },
+        {
+            backgroundPosition: '50% 20%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.services-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        }
+    );
+
+    // 8. Typing Effect (Vanilla JS Implementation)
+    const typeWriterElement = document.getElementById('typewriter');
+    if (typeWriterElement) {
+        const texts = ["PREMIUM AUTO CARE SOLUTIONS", "EXPERT CAR DETAILING", "RELIABLE BATTERY SERVICE", "GENUINE AUTO ACCESSORIES"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        // Add cursor
+        const cursor = document.createElement('span');
+        cursor.className = 'text-type__cursor';
+        cursor.textContent = '|';
+        typeWriterElement.parentElement.appendChild(cursor);
+
+        // Blink cursor with GSAP
+        gsap.to(cursor, {
+            opacity: 0,
+            duration: 0.7,
+            repeat: -1,
+            yoyo: true,
+            ease: "power2.inOut"
+        });
+
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            let typeSpeed = 100;
+
+            if (isDeleting) {
+                typeWriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; // Deleting speed
+            } else {
+                typeWriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; // Typing speed
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500; // Pause before new text
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        typeEffect();
     }
 });
