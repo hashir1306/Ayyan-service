@@ -1,0 +1,22 @@
+STARTING PUSH
+GIT VERSION:
+'git' is not recognized as an internal or external command,
+operable program or batch file.
+INIT:
+'git' is not recognized as an internal or external command,
+operable program or batch file.
+ADD:
+'git' is not recognized as an internal or external command,
+operable program or batch file.
+COMMIT:
+'git' is not recognized as an internal or external command,
+operable program or batch file.
+BRANCH:
+'git' is not recognized as an internal or external command,
+operable program or batch file.
+REMOTE ADD:
+'git' is not recognized as an internal or external command,
+operable program or batch file.
+PUSH:
+'git' is not recognized as an internal or external command,
+operable program or batch file.
