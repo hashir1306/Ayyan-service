@@ -364,6 +364,11 @@ h2.section-title {
     gap: 1.5rem;
 }
 
+.hero-btns .btn-primary,
+.hero-btns .btn-outline {
+    border-radius: 50px;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 3rem;
