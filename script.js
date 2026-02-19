@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader-wrapper');
     const progressFill = document.querySelector('.progress-fill');
 
+    // Set initial states immediately to prevent FOUC
+    gsap.set('.nav-content > *', { y: -20, opacity: 0 });
+    gsap.set('.reveal-text', { y: 50, opacity: 0 });
+    gsap.set('.hero-bg', { scale: 1.3 });
+
     let progress = 0;
     const interval = setInterval(() => {
         progress += Math.random() * 30;
@@ -36,21 +41,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function initHeroAnimations() {
         const tl = gsap.timeline();
 
-        tl.from('.hero-bg', {
-            scale: 1.3,
+        tl.to('.hero-bg', {
+            scale: 1,
             duration: 2.5,
             ease: 'power2.out'
         })
-            .from('.reveal-text', {
-                y: 50,
-                opacity: 0,
+            .to('.reveal-text', {
+                y: 0,
+                opacity: 1,
                 duration: 1,
                 stagger: 0.2,
                 ease: 'power3.out'
             }, '-=1.5')
-            .from('.nav-content > *', {
-                y: -20,
-                opacity: 0,
+            .to('.nav-content > *', {
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 stagger: 0.1,
                 ease: 'power3.out'
