@@ -16,9 +16,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (loader && progressFill && !isReturningUser) {
         let progress = 0;
-        // Ultra-fast loader: updates every 20ms
+        const heroVideo = document.getElementById('hero-video');
+        let videoLoaded = false;
+
+        // Check if video is already ready
+        if (heroVideo && heroVideo.readyState >= 3) {
+            videoLoaded = true;
+        } else if (heroVideo) {
+            // Listen for load data
+            heroVideo.addEventListener('canplaythrough', () => {
+                videoLoaded = true;
+            }, { once: true });
+
+            // Also listen for loadeddata as backup
+            heroVideo.addEventListener('loadeddata', () => {
+                videoLoaded = true;
+            }, { once: true });
+        } else {
+            // No video, just proceed
+            videoLoaded = true;
+        }
+
+        // Timer to force finish if video takes too long (5s max)
+        setTimeout(() => {
+            videoLoaded = true;
+        }, 5000);
+
         const interval = setInterval(() => {
-            progress += Math.random() * 20;
+            // Increment progress slowly if video not loaded, faster if loaded
+            if (!videoLoaded) {
+                // Cap at 85% until video is ready
+                if (progress < 85) {
+                    progress += Math.random() * 2;
+                }
+            } else {
+                // Video ready, finish up fast
+                progress += (Math.random() * 10) + 5;
+            }
+
             if (progress > 100) progress = 100;
             progressFill.style.width = `${progress}%`;
 
@@ -30,9 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     initHeroAnimations();
                     // Mark as visited
                     sessionStorage.setItem('visited', 'true');
-                }, 200);
+
+                    // Ensure video plays
+                    if (heroVideo) heroVideo.play().catch(e => console.log("Auto-play prevented", e));
+                }, 500);
             }
-        }, 20);
+        }, 50);
     } else {
         // Returning user or no loader: Skip animation completely
         if (loader) {
@@ -135,9 +173,33 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerText = 'Sending...';
             btn.disabled = true;
 
-            // Simulate API call
+            // Get form values
+            const name = document.getElementById('booking-name').value;
+            const phone = document.getElementById('booking-phone').value;
+            const vehicle = document.getElementById('booking-vehicle').value;
+            const service = document.getElementById('booking-service').value;
+            const message = document.getElementById('booking-message').value;
+
+            // Construct WhatsApp Message
+            // Using 91 (India) country code based on the number format provided (10 digits starting with 77)
+            const whatsappNumber = "917736144143";
+
+            const text = `*New Booking Request*\n\n` +
+                `*Name:* ${name}\n` +
+                `*Phone:* ${phone}\n` +
+                `*Vehicle:* ${vehicle}\n` +
+                `*Service:* ${service}\n` +
+                `*Message:* ${message}`;
+
+            const encodedText = encodeURIComponent(text);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappURL, '_blank');
+
+            // Reset UI
             setTimeout(() => {
-                btn.innerText = 'Success! We will contact you soon.';
+                btn.innerText = 'Message Sent!';
                 btn.style.background = '#22c55e';
                 bookingForm.reset();
 
@@ -146,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.background = '';
                     btn.disabled = false;
                 }, 3000);
-            }, 1500);
+            }, 1000);
         });
     }
 

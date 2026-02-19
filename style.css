@@ -77,7 +77,7 @@ a {
 .services-section {
     position: relative;
     background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)),
-        url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&q=80&w=2000');
+        url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&q=80&w=1200');
     background-size: cover;
     background-position: center top;
     background-attachment: scroll;

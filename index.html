@@ -57,15 +57,15 @@
     </nav>
 
     <!-- WhatsApp Widget -->
-    <a href="https://wa.me/0526791455" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/917736144143" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <main>
         <section id="hero" class="hero-section">
             <div class="hero-bg">
-                <video autoplay muted loop playsinline id="hero-video" preload="auto">
-                    <source src="main.mp4" type="video/mp4">
+                <video autoplay muted loop playsinline id="hero-video" preload="auto" poster="images/car detailing.jpg">
+                    <source src="video3.mp4" type="video/mp4">
                 </video>
                 <div class="overlay"></div>
             </div>
@@ -153,8 +153,7 @@
                             <span class="stat-label">Genuine</span>
                         </div>
                     </div>
-                    <a href="accessories.html" class="btn-text">View Shop Catalogue <i
-                            class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="btn-text">View Shop Catalogue <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="product-image-container reveal-right">
                     <div class="image-wrapper">
@@ -206,20 +205,20 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" placeholder="John Doe" required>
+                                    <input type="text" id="booking-name" placeholder="John Doe" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Phone Number</label>
-                                    <input type="tel" placeholder="+1 (234) 567-890" required>
+                                    <input type="tel" id="booking-phone" placeholder="+1 (234) 567-890" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Vehicle Model</label>
-                                <input type="text" placeholder="e.g. Toyota Camry 2023" required>
+                                <input type="text" id="booking-vehicle" placeholder="e.g. Toyota Camry 2023" required>
                             </div>
                             <div class="form-group">
                                 <label>Select Service</label>
-                                <select required>
+                                <select id="booking-service" required>
                                     <option value="">Select a service</option>
                                     <option value="servicing">Oil Change & Servicing</option>
                                     <option value="detailing">Car Detailing</option>
@@ -230,7 +229,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Message (Optional)</label>
-                                <textarea rows="4" placeholder="How can we help you?"></textarea>
+                                <textarea id="booking-message" rows="4" placeholder="How can we help you?"></textarea>
                             </div>
                             <button type="submit" class="btn-primary full">Submit Request</button>
                         </form>
@@ -255,7 +254,7 @@
                             <i class="fa-solid fa-envelope"></i>
                             <div>
                                 <h4>Contact Number </h4>
-                                <p>0526791455</p>
+                                <p>+971526791455</p>
                             </div>
                         </div>
 
