@@ -11,21 +11,35 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.set('.reveal-text', { y: 50, opacity: 0 });
     gsap.set('.hero-bg', { scale: 1.3 });
 
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.random() * 30;
-        if (progress > 100) progress = 100;
-        progressFill.style.width = `${progress}%`;
+    // Check for returning visitor in this session
+    const isReturningUser = sessionStorage.getItem('visited');
 
-        if (progress === 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                loader.style.visibility = 'hidden';
-                initHeroAnimations();
-            }, 500);
+    if (loader && progressFill && !isReturningUser) {
+        let progress = 0;
+        // Ultra-fast loader: updates every 20ms
+        const interval = setInterval(() => {
+            progress += Math.random() * 20;
+            if (progress > 100) progress = 100;
+            progressFill.style.width = `${progress}%`;
+
+            if (progress === 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                    initHeroAnimations();
+                    // Mark as visited
+                    sessionStorage.setItem('visited', 'true');
+                }, 200);
+            }
+        }, 20);
+    } else {
+        // Returning user or no loader: Skip animation completely
+        if (loader) {
+            loader.style.display = 'none';
         }
-    }, 200);
+        initHeroAnimations();
+    }
 
     // 2. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
@@ -181,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 8. Typing Effect (Vanilla JS Implementation)
     const typeWriterElement = document.getElementById('typewriter');
     if (typeWriterElement) {
-        const texts = ["PREMIUM AUTO CARE SOLUTIONS", "EXPERT CAR DETAILING", "RELIABLE BATTERY SERVICE", "GENUINE AUTO ACCESSORIES"];
+        const texts = ["PREMIUM OIL CHANGE SERVICE", "EXPERT CAR DETAILING", "RELIABLE BATTERY SERVICE", "GENUINE AUTO ACCESSORIES"];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;

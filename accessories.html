@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Car Accessories | Ayyan Service</title>
+    <meta name="description"
+        content="Enhance your driving experience with our premium selection of car accessories. From comfort upgrades to tech gadgets.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 100px;
+            padding-bottom: 50px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 2, 5, 0.85);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 120px;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .reveal-right {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .center h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="index.html#accessories" class="back-arrow"
+                style="margin-right: 15px; color: white; font-size: 1.2rem;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpeg" alt="Ayyan Service Logo">
+                AYYAN<span>SERVICE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#accessories">Accessories</a></li>
+                <li><a href="index.html#battery">Batteries</a></li>
+                <li><a href="index.html#contact" class="btn-primary">Book Now</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-bg">
+                <img src="images/accesseries1.jpg" alt="Premium Accessories Background" class="hero-image"
+                    loading="eager">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="container" style="position: relative; z-index: 2;">
+                <!-- Header Content -->
+                <div class="center" style="margin-bottom: 4rem;">
+                    <h1 class="reveal-text">Premium Accessories</h1>
+                    <p class="reveal-text" style="color: var(--text-secondary); font-size: 1.2rem;">Elevate style,
+                        comfort, and functionality</p>
+                </div>
+
+                <!-- Detail Grid -->
+                <div class="detail-grid">
+                    <div class="reveal-left">
+                        <h2 class="section-title">Upgrade Your Ride</h2>
+                        <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                            Discover our curated collection of high-quality automotive accessories designed to enhance
+                            every journey. From practical utility items to stylish interior upgrades, we have everything
+                            you need.
+                        </p>
+                        <ul class="service-list">
+                            <li><i class="fa-solid fa-check"></i> <strong>Interior Comfort:</strong> Seat covers, floor
+                                mats, and ergonomic cushions.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Tech & Gadgets:</strong> Dash cams, phone
+                                mounts, and chargers.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Exterior Styling:</strong> Chrome trims, wheel
+                                covers, and spoilers.</li>
+                            <li><i class="fa-solid fa-check"></i> <strong>Car Care Kits:</strong> Premium cleaning and
+                                maintenance products.</li>
+                        </ul>
+                        <a href="index.html#contact" class="btn-primary" style="margin-top: 2rem;">Inquire Now</a>
+                    </div>
+                    <div class="reveal-right">
+                        <img src="images/accessories.jpg" alt="Car Accessories" loading="lazy"
+                            style="width: 100%; border-radius: 12px; border: 1px solid var(--glass-border); box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ayyan Service. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
