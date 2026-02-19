@@ -181,8 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('booking-message').value;
 
             // Construct WhatsApp Message
-            // Using 91 (India) country code based on the number format provided (10 digits starting with 77)
-            const whatsappNumber = "917736144143";
+            // Using 971 (UAE) country code
+            const whatsappNumber = "+971526791455";
 
             const text = `*New Booking Request*\n\n` +
                 `*Name:* ${name}\n` +
