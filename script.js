@@ -68,6 +68,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Ensure video plays
                     if (heroVideo) heroVideo.play().catch(e => console.log("Auto-play prevented", e));
+
+                    // Handle hash navigation after loader
+                    if (window.location.hash) {
+                        const target = document.querySelector(window.location.hash);
+                        if (target) {
+                            setTimeout(() => {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                            }, 500);
+                        }
+                    }
                 }, 500);
             }
         }, 50);
@@ -77,6 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
             loader.style.display = 'none';
         }
         initHeroAnimations();
+
+        // Handle hash navigation for returning users
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
     }
 
     // 2. Navbar Scroll Effect
