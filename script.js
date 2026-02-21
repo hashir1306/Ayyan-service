@@ -330,4 +330,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
         typeEffect();
     }
+
+    // 9. Custom Cursor Animation
+    const cursorDot = document.createElement('div');
+    cursorDot.classList.add('custom-cursor-dot');
+    document.body.appendChild(cursorDot);
+
+    const cursorOutline = document.createElement('div');
+    cursorOutline.classList.add('custom-cursor');
+    document.body.appendChild(cursorOutline);
+
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+
+    // Detect non-touch pointers before activating continuous loop
+    if (window.matchMedia("(pointer: fine)").matches) {
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Dot follows instantly
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+        });
+
+        // Smooth follow for the outline using GSAP ticker
+        gsap.ticker.add(() => {
+            outlineX += (mouseX - outlineX) * 0.15;
+            outlineY += (mouseY - outlineY) * 0.15;
+
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
+        });
+
+        // Hover effect for interactive elements
+        const applyHoverEffect = () => {
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea, .menu-toggle, .service-card, .oil-item, .oils-grid img');
+            interactiveElements.forEach((el) => {
+                // Remove existing to prevent duplicates if called multiple times
+                el.removeEventListener('mouseenter', addHoverState);
+                el.removeEventListener('mouseleave', removeHoverState);
+
+                el.addEventListener('mouseenter', addHoverState);
+                el.addEventListener('mouseleave', removeHoverState);
+            });
+        };
+
+        function addHoverState() { cursorOutline.classList.add('hover'); }
+        function removeHoverState() { cursorOutline.classList.remove('hover'); }
+
+        applyHoverEffect();
+
+        // In case dynamic elements are added later, re-apply (optional safety net)
+        setTimeout(applyHoverEffect, 1000);
+    }
 });
