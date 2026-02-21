@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressFill = document.querySelector('.progress-fill');
 
     // Set initial states immediately to prevent FOUC
-    gsap.set('.nav-content > *', { y: -20, opacity: 0 });
+    const navItems = ['.logo', '.nav-links > li', '.menu-toggle'];
+    gsap.set(navItems, { y: -20, opacity: 0 });
     gsap.set('.reveal-text', { y: 50, opacity: 0 });
     gsap.set('.hero-bg', { scale: 1.3 });
 
@@ -47,11 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!videoLoaded) {
                 // Cap at 85% until video is ready
                 if (progress < 85) {
-                    progress += Math.random() * 2;
+                    progress += Math.random() * 4; // Sped up initial loading
                 }
             } else {
                 // Video ready, finish up fast
-                progress += (Math.random() * 10) + 5;
+                progress += (Math.random() * 15) + 10; // Sped up final loading
             }
 
             if (progress > 100) progress = 100;
@@ -111,27 +112,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Hero Animations
     function initHeroAnimations() {
+        // Safe elements to animate without breaking mobile drawer css transforms
+        const navItemsAnim = ['.logo', '.nav-links > li', '.menu-toggle'];
+
         const tl = gsap.timeline();
 
         tl.to('.hero-bg', {
             scale: 1,
-            duration: 2.5,
+            duration: 2.0, // Slightly faster background reveal
             ease: 'power2.out'
         })
+            .to(navItemsAnim, {
+                y: 0,
+                opacity: 1,
+                duration: 0.6,
+                stagger: 0.1,
+                clearProps: 'opacity,transform', // Clean up inline styles so CSS media queries take back full control
+                ease: 'power3.out'
+            }, '-=1.8') // Start revealing the logo and navbar immediately with the background
             .to('.reveal-text', {
                 y: 0,
                 opacity: 1,
-                duration: 1,
-                stagger: 0.2,
-                ease: 'power3.out'
-            }, '-=1.5')
-            .to('.nav-content > *', {
-                y: 0,
-                opacity: 1,
                 duration: 0.8,
-                stagger: 0.1,
+                stagger: 0.15,
                 ease: 'power3.out'
-            }, '-=0.8');
+            }, '-=1.2');
     }
 
     // 4. Scroll Reveal Animations
