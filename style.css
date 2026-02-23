@@ -35,12 +35,17 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--background);
+    background-color: #020617;
+    /* Slate very dark */
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
-    background-image: radial-gradient(circle at 50% 0%, #172033 0%, #020205 70%);
-    /* Subtle top glow */
+    /* Create a light blue shaded ambient background while preserving readability */
+    background-image:
+        radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 100%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 100%);
+    background-attachment: fixed;
 }
 
 h1,
@@ -850,9 +855,14 @@ h2.section-title {
 /* Responsive */
 @media (max-width: 1024px) {
 
-    .product-layout,
-    .product-layout.reverse {
+    .product-layout {
         flex-direction: column;
+        gap: 3rem;
+        align-items: stretch;
+    }
+
+    .product-layout.reverse {
+        flex-direction: column-reverse;
         gap: 3rem;
         align-items: stretch;
     }
