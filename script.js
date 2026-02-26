@@ -202,7 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('booking-name').value;
             const phone = document.getElementById('booking-phone').value;
             const vehicle = document.getElementById('booking-vehicle').value;
-            const service = document.getElementById('booking-service').value;
+            const serviceSelect = document.getElementById('booking-service');
+            const service = serviceSelect.options[serviceSelect.selectedIndex].text;
             const message = document.getElementById('booking-message').value;
 
             // Construct WhatsApp Message
